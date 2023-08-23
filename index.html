@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" integrity="sha512-doJrC/ocU8VGVRx3O9981+2aYUn3fuWVWvqLi1U+tA2MWVzsw+NVKq1PrENF03M+TYBP92PnYUlXFH1ZW0FpLw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- displays site properly based on user's device -->
+
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <title>Interactive card details form</title>
+
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+
+      body {
+        background: linear-gradient(
+          to left,
+          white 0%,
+          white 70%,
+          #C0DEFF 70%,
+          #C0DEFF 100%
+        );
+        
+      }
+
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            
+        }
+      }
+    }
+    </script>
+  </head>
+  <body class="font-mono">
+    <div class="flex flex-col justify-evenly items-center lg:flex-row">
+      <!-- card-front -->
+      <div class="">
+        <div class="w-[24rem] min-w-sm bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg lg:ml-24 my-12 wow slideInLeft">
+          <div class="flex gap-2 items-center p-8">
+            <p class="rounded-full w-12 h-12 bg-white"></p>
+            <p class="rounded-full w-8 h-8 border-2 border-white"></p>
+          </div>
+          <p
+            class="my-3 text-center tracking-widest text-2xl"
+            id="numberoutput"
+          >
+            0000 0000 0000 0000
+          </p>
+          <div class="flex justify-around py-4">
+            <p class="uppercase" id="nameoutput">Jane Appleseed</p>
+            <p class="uppercase" id="expiryoutput">00/00</p>
+          </div>
+        </div>
+        <!-- card-back -->
+        <div class="w-[24rem] min-w-sm bg-gradient-to-r from-violet-500 to-fuchsia-500  rounded-lg m-3 lg:ml-56 wow slideInLeft" data-wow-delay=".1s">
+          <div class="py-3">
+            <p class="rounded h-12 bg-black"></p>
+          </div>
+          <div class="flex justify-between items-center px-4 py-2">
+            <p class="rounded h-12 bg-gray-200/30 flex-1"></p>
+            <p class="px-3" id="cvvoutput">000</p>
+          </div>
+          <div class="">
+            <p class="text-center text-6xl p-4">
+              &#95;&#95;&#95;&#95;&#95;&#95;
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- form -->
+      <div class="container m-8 max-w-sm flex-1 wow slideInRight">
+        <form action="flex flex-col">
+          <div class="flex flex-col my-4">
+            <label for="name" class="">Cardholder Name</label>
+            <input
+              type="text"
+              class="inline-block max-w-sm rounded"
+              id="nameinput"
+              placeholder="e.g.jane appleseed"
+              ondblclick="this.value=''"
+            />
+          </div>
+          <div class="flex flex-col my-4">
+            <label for="name" class="">Card Number</label>
+            <input
+              type="text"
+              minlength="16"
+              maxlength="16"
+              class="inline-block max-w-sm rounded"
+              id="numberinput"
+              placeholder="e.g.1234567890000000"
+              ondblclick="this.value=''"
+            />
+          </div>
+          <div class="flex justify-between">
+            <div class="flex flex-col">
+              <label for="name" class="">Exp. Date (MM/YY)</label>
+              <div class="">
+                <input
+                  type="text"
+                  class="max-w-[4.5rem] rounded"
+                  id="monthinput"
+                  maxlength="2"
+                  minlength="1"
+                  placeholder="MM"
+                  ondblclick="this.value=''"
+                />
+                <input
+                  type="text"
+                  class="max-w-[4.5rem] rounded"
+                  id="yearinput"
+                  maxlength="2"
+                  placeholder="YY"
+                  ondblclick="this.value=''"
+                  
+                />
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <label for="name" class="">CVV</label>
+              <input type="text" class="max-w-[8rem] rounded" id="cvvinput" maxlength="3" placeholder="e.g.123" ondblclick="this.value=''" />
+            </div>
+          </div>
+        </form>
+        <button
+          id="button"
+          class="bg-red-700 py-2 px-[10rem] my-4 duration-150 rounded hover:bg-red-500 text-white"
+          onclick="getForm()"
+        >
+          Confirm
+        </button>
+      </div>
+    </div>
+
+    <!-- 
+  0000 0000 0000 0000
+  Jane Appleseed
+  00/00
+
+  000
+
+  Cardholder Name
+  e.g. Jane Appleseed
+
+  Card Number
+  e.g. 1234 5678 9123 0000
+
+  Exp. Date (MM/YY)
+  MM
+  YY
+
+  CVC
+  e.g. 123
+
+  Confirm -->
+
+    <!-- Completed state start -->
+
+    <!-- Thank you!
+  We've added your card details
+  Continue -->
+
+    <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+    <script src="card.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      new WOW().init();
+      </script>
+  </body>
+
+</html>
+
+<!-- background:linear-gradient(to bottom, white 0%, white 80%, theme(colors.violet.600) 80%,theme(colors.violet.600) 100%) -->
